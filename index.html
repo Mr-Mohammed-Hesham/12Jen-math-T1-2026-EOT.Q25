@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📝 Written Exam: Normal Distribution Probabilities - رياضيات 12 عام | Mr. Mohammed Hesham</title>
+<meta name="description" content="امتحان كتابي (مقالي) عن إيجاد احتمالات التوزيعات الطبيعية وقيم البيانات - صف 12 عام">
+<meta name="author" content="Mr. Mohammed Hesham">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Cairo', sans-serif; background: linear-gradient(135deg, #ffe4e6 0%, #fecdd3 100%); }
+body.en-mode { font-family: 'Inter', sans-serif; direction: ltr; }
+.arabic-math { font-family: 'Amiri', 'Cairo', serif; }
+.math-display { display: inline-block; direction: ltr; font-family: 'Amiri', serif; font-size: 1.15em; padding: 2px 8px; background: #ffe4e6; border-radius: 4px; margin: 2px; color: #9f1239; font-weight: 700; }
+.save-indicator { position: fixed; bottom: 20px; left: 20px; z-index: 200; background: #10b981; color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+body.en-mode .save-indicator { left: auto; right: 20px; }
+.save-indicator.show { opacity: 1; }
+.lang-switch { position: fixed; top: 16px; left: 16px; z-index: 100; background: white; padding: 6px; border-radius: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: flex; gap: 4px; border: 2px solid #e11d48; }
+body.en-mode .lang-switch { left: auto; right: 16px; }
+.lang-btn { padding: 6px 14px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s; border: none; font-size: 0.875rem; background: transparent; color: #6b7280; }
+.lang-btn.active { background: #e11d48; color: white; box-shadow: 0 2px 6px rgba(225,29,72,0.4); }
+.timer-warning { color: #dc2626 !important; animation: pulse 1s infinite; }
+@keyframes pulse { 50% { opacity: 0.7; } }
+@media print { .no-print { display: none !important; } .model-box { display: none !important; } textarea { border: 1px solid #9ca3af !important; } }
+.svg-graph { display: block; margin: 12px auto; background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 8px; max-width: 100%; }
+.graph-container { text-align: center; margin: 10px 0; }
+.q-card { background: white; border: 2px solid #e11d48; border-radius: 16px; padding: 20px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.q-statement { background: #ffe4e6; border: 2px solid #e11d48; border-radius: 8px; padding: 12px; font-size: 1.02rem; font-weight: 700; color: #881337; }
+.q-statement table { margin: 8px auto; border-collapse: collapse; direction: ltr; font-family: 'Amiri', serif; }
+.q-statement th, .q-statement td { border: 1.5px solid #64748b; padding: 4px 12px; font-size: 1rem; }
+.q-statement th { background: #dbeafe; color: #1e3a8a; }
+.answer-area { width: 100%; min-height: 170px; border: 2px solid #e11d48; border-radius: 10px; background: #fff1f2; padding: 12px; font-family: 'Cairo', sans-serif; font-size: 1rem; line-height: 2; background-image: repeating-linear-gradient(transparent, transparent 31px, #94a3b8 32px); resize: vertical; }
+.answer-area:focus { outline: none; border-color: #0891b2; background-color: #ecfeff; }
+.model-box { background: #f0fdf4; border: 2px solid #16a34a; border-radius: 10px; padding: 14px; margin-top: 12px; }
+.model-step { padding: 6px 10px; border-bottom: 1px dashed #86efac; font-family: 'Amiri', serif; direction: ltr; text-align: left; font-size: 1.05rem; color: #14532d; }
+.model-step .step-no { display: inline-block; background: #16a34a; color: white; border-radius: 50%; width: 22px; height: 22px; text-align: center; font-size: 0.8rem; line-height: 22px; margin-right: 8px; font-family: 'Cairo', sans-serif; }
+.final-answer { background: #dcfce7; border: 2px solid #16a34a; border-radius: 8px; padding: 10px; margin-top: 10px; text-align: center; font-weight: 800; color: #166534; font-size: 1.1rem; font-family: 'Amiri', serif; direction: ltr; }
+.rubric-chip { display: inline-block; background: #ffe4e6; border: 1px solid #e11d48; color: #9f1239; border-radius: 14px; padding: 2px 10px; font-size: 0.75rem; margin: 2px; font-weight: 600; }
+.score-input { width: 70px; border: 2px solid #e11d48; border-radius: 8px; padding: 6px; text-align: center; font-weight: 800; font-size: 1.1rem; color: #9f1239; background: #fff1f2; }
+.check-item { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: #374151; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 4px 10px; }
+.section-head { background: linear-gradient(135deg, #e11d48, #be123c); color: white; border-radius: 12px; padding: 10px 20px; font-weight: 800; font-size: 1.15rem; margin: 30px 0 18px; box-shadow: 0 4px 10px rgba(190,18,60,0.3); }
+</style>
+</head>
+<body class="p-4 md:p-8 min-h-screen">
+
+<div class="lang-switch no-print">
+<button class="lang-btn active" onclick="setLanguage('ar')" id="btn-ar">عربي</button>
+<button class="lang-btn" onclick="setLanguage('en')" id="btn-en">EN</button>
+</div>
+
+<div id="saveIndicator" class="save-indicator">💾 <span data-ar="تم الحفظ" data-en="Saved">تم الحفظ</span></div>
+
+<div id="timer-container" class="max-w-4xl mx-auto mb-4 text-center no-print">
+<div class="bg-white p-4 rounded-2xl shadow-lg inline-block border-2 border-rose-100">
+<span class="text-gray-600 ml-2">⏰ <span data-ar="الوقت المتبقي:" data-en="Time Left:">الوقت المتبقي:</span></span>
+<span id="timer" class="text-2xl font-bold text-rose-700 font-mono">75:00</span>
+<span class="ml-3 inline-block bg-rose-700 text-white px-3 py-1 rounded-full text-xs font-bold">📝 <span data-ar="امتحان كتابي (مقالي)" data-en="Written Exam">امتحان كتابي (مقالي)</span> - 10 <span data-ar="مسائل" data-en="Problems">مسائل</span></span>
+</div>
+</div>
+
+<div class="max-w-4xl mx-auto mb-6 flex flex-wrap gap-3 justify-center no-print">
+<button onclick="toggleAllModels()" class="bg-green-700 hover:bg-green-800 text-white px-5 py-2 rounded-xl font-medium transition shadow">🔑 <span data-ar="إظهار/إخفاء الحلول النموذجية" data-en="Show/Hide Model Solutions">إظهار/إخفاء الحلول النموذجية</span></button>
+<button onclick="gradeExam()" class="bg-amber-600 hover:bg-amber-700 text-white px-5 py-2 rounded-xl font-medium transition shadow">🧮 <span data-ar="احتساب المجموع" data-en="Compute Total">احتساب المجموع</span></button>
+<button onclick="window.print()" class="bg-gray-700 hover:bg-gray-900 text-white px-5 py-2 rounded-xl font-medium transition shadow">🖨️ <span data-ar="طباعة" data-en="Print">طباعة</span></button>
+<button onclick="clearProgress()" class="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-xl font-medium transition shadow">🗑️ <span data-ar="مسح المحفوظ" data-en="Clear Saved">مسح المحفوظ</span></button>
+</div>
+
+<header class="max-w-4xl mx-auto bg-white p-8 rounded-3xl shadow-2xl mb-6 border-4 border-rose-500">
+<div class="text-center">
+<div class="inline-block bg-rose-700 text-white px-6 py-2 rounded-full text-sm font-bold mb-4">MATH GRADE 12 GENERAL - QUESTION 25 (WRITTEN)</div>
+<h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">📝 <span data-ar="احتمالات التوزيع الطبيعي وإيجاد قيم البيانات" data-en="Normal Distribution Probabilities & Finding Data Values">احتمالات التوزيع الطبيعي وإيجاد قيم البيانات</span></h1>
+<h2 class="text-xl text-rose-700 font-semibold mb-2"><span data-ar="القسم الثاني: الأسئلة المقالية - ص 277 (مثال 5)، ص 279 (17)" data-en="Part Two: Written - Page 277 (Ex. 5), Page 279 (17)">القسم الثاني: الأسئلة المقالية - ص 277 (مثال 5)، ص 279 (17)</span></h2>
+<p class="text-gray-600 mb-3"><span data-ar="وحّد المعايرة (z-score)، اقرأ المساحة من الجدول، ثم اجمع أو اطرح أو أكمل" data-en="Standardize (z-score), read area from table, then add / subtract / complement">وحّد المعايرة (z-score)، اقرأ المساحة من الجدول، ثم اجمع أو اطرح أو أكمل</span></p>
+<p class="text-sm text-green-700 font-semibold">💾 <span data-ar="يُحفظ حلّك تلقائياً" data-en="Auto-saves while typing">يُحفظ حلّك تلقائياً</span> | 📊 <span data-ar="كل مسألة 10 درجات — المجموع 100" data-en="10 pts each — Total 100">كل مسألة 10 درجات — المجموع 100</span></p>
+</div>
+<div class="mt-5 flex flex-wrap justify-center gap-4 text-sm text-gray-600">
+<span>📅 <span data-ar="التاريخ:" data-en="Date:">التاريخ:</span> <input type="text" id="examDate" class="border-b-2 border-rose-300 bg-transparent w-32 text-center"></span>
+<span>😊 <span data-ar="الاسم:" data-en="Name:">الاسم:</span> <input type="text" id="studentName" class="border-b-2 border-rose-300 bg-transparent w-44 text-center" placeholder="اكتب اسمك"></span>
+<span>🏫 <span data-ar="الشعبة:" data-en="Class:">الشعبة:</span> <input type="text" id="studentClass" class="border-b-2 border-rose-300 bg-transparent w-28 text-center" placeholder="الشعبة"></span>
+</div>
+<div class="mt-5 bg-rose-50 border-2 border-rose-300 rounded-xl p-4 text-sm">
+<p class="font-bold text-rose-800 mb-2 text-center">📋 <span data-ar="معيار التصحيح (10 درجات لكل مسألة):" data-en="Grading Rubric (10 points per problem):">معيار التصحيح (10 درجات لكل مسألة):</span></p>
+<div class="text-center">
+<span class="rubric-chip">3 <span data-ar="درجات: حساب قيمة z بالتوحيد القياسي" data-en="pts: computing z by standardization">درجات: حساب قيمة z بالتوحيد القياسي</span></span>
+<span class="rubric-chip">3 <span data-ar="درجات: قراءة المساحة من الجدول" data-en="pts: reading area from table">درجات: قراءة المساحة من الجدول</span></span>
+<span class="rubric-chip">2 <span data-ar="نقطة: العملية الصحيحة (طرح/تكملة)" data-en="pt: correct operation (subtract/complement)">نقطة: العملية الصحيحة (طرح/تكملة)</span></span>
+<span class="rubric-chip">2 <span data-ar="نقطة: الناتج النهائي بوحداته" data-en="pts: final result with units">نقطة: الناتج النهائي بوحداته</span></span>
+</div>
+<p class="text-center text-xs text-rose-700 mt-2 font-bold arabic-math">🔑 z = (x - μ)/σ | P(a&lt;X&lt;b) = A(z_b) - A(z_a) | P(X≥k) = 1 - A(z) | عكسياً: x = μ + z·σ</p>
+</div>
+<div id="method-holder" class="mt-4"></div>
+</header>
+
+<main class="max-w-4xl mx-auto" id="exam-content"></main>
+
+<div id="results-panel" class="max-w-4xl mx-auto mt-8 bg-white p-8 rounded-3xl shadow-2xl border-4 border-rose-500 hidden no-print">
+<h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">🏆 <span data-ar="بطاقة النتيجة" data-en="Result Card">بطاقة النتيجة</span> 🏆</h2>
+<div class="grid md:grid-cols-3 gap-4 mb-6">
+<div class="bg-rose-50 p-4 rounded-xl text-center"><p>😊 <span data-ar="الاسم" data-en="Name">الاسم</span></p><p id="res-name" class="font-bold text-xl text-rose-700">-</p></div>
+<div class="bg-pink-50 p-4 rounded-xl text-center"><p>📅 <span data-ar="التاريخ" data-en="Date">التاريخ</span></p><p id="res-date" class="font-bold text-xl text-pink-700">-</p></div>
+<div class="bg-rose-50 p-4 rounded-xl text-center"><p>🌟 <span data-ar="المجموع" data-en="Total">المجموع</span></p><p id="res-total" class="font-bold text-3xl text-rose-700">0 / 100</p></div>
+</div>
+<div class="text-center mb-6">
+<span id="success-badge" class="inline-block px-4 py-1 rounded-full font-bold bg-rose-100 text-rose-800">-</span>
+<p id="success-percent" class="text-4xl font-bold text-rose-700 mt-2">0%</p>
+</div>
+<div class="bg-gray-50 p-5 rounded-xl mb-6">
+<h3 class="font-bold text-lg mb-3 text-gray-800">📊 <span data-ar="درجات المسائل:" data-en="Problem Scores:">درجات المسائل:</span></h3>
+<div class="space-y-2" id="per-problem-scores"></div>
+</div>
+<div class="text-center">
+<button id="sendEmailBtn" onclick="sendResultsToEmail()" class="bg-gradient-to-r from-rose-700 to-pink-600 text-white text-lg px-8 py-3 rounded-2xl font-bold shadow-xl transition">📧 <span data-ar="أرسل الإجابات والدرجات للمعلم" data-en="Send Answers & Scores to Teacher">أرسل الإجابات والدرجات للمعلم</span></button>
+<p id="emailStatus" class="text-sm mt-2 font-medium"></p>
+</div>
+</div>
+
+<footer class="max-w-4xl mx-auto mt-10 mb-8 text-center text-gray-500 text-sm no-print">
+© Written Exam: Normal Distribution - Grade 12 General | Mr. Mohammed Hesham 📝
+</footer>
+
+<script>
+const PUBLIC_KEY = "Rb3Lq8tXaFmc5YHUH";
+const SERVICE_ID = "service_w15m64i";
+const TEMPLATE_ID = "template_5b0u2tq";
+const TARGET_EMAIL = "mohammedhesham872@gmail.com";
+emailjs.init(PUBLIC_KEY);
+
+const STORAGE_KEY = 'written_normal_dist_g12_v1';
+const TOTAL_TIME = 4500;
+
+let currentLang = 'ar';
+let timeRemaining = TOTAL_TIME;
+let timerInterval = null;
+let modelsVisible = false;
+let studentAnswers = {};
+let studentScores = {};
+let studentChecks = {};
+let saveIndicatorTimeout = null;
+
+const TBL = (rows) => '<table><tr><th>z</th>' + rows.map(r => '<td>' + r[0] + '</td>').join('') + '</tr><tr><th>' + 'المساحة على يسار z' + '</th>' + rows.map(r => '<td>' + r[1] + '</td>').join('') + '</tr></table>';
+
+// ==================== SVG DIAGRAMS ====================
+const BELL = 'M 40 210 C 90 208 120 200 150 170 C 180 130 200 70 240 60 C 280 70 300 130 330 170 C 360 200 390 208 440 210';
+const svgGraphs = {
+standardize_flow: `<svg class="svg-graph" width="480" height="250" viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="470" height="240" rx="12" fill="#ffe4e6" stroke="#e11d48" stroke-width="2"/>
+<text x="240" y="26" text-anchor="middle" font-size="14" fill="#9f1239" font-weight="bold">📋 استراتيجية الحل: من X إلى الاحتمال</text>
+<rect x="25" y="45" width="120" height="60" rx="8" fill="#fecdd3" stroke="#e11d48" stroke-width="2"/>
+<text x="85" y="68" text-anchor="middle" font-size="10" fill="#9f1239" font-weight="bold">البيانات X</text>
+<text x="85" y="86" text-anchor="middle" font-size="10" fill="#9f1239" font-family="'Amiri',serif">μ , σ</text>
+<path d="M148 75 L168 75" stroke="#9f1239" stroke-width="2" marker-end="url(#aN)"/>
+<rect x="170" y="45" width="140" height="60" rx="8" fill="#fecdd3" stroke="#e11d48" stroke-width="2"/>
+<text x="240" y="66" text-anchor="middle" font-size="10" fill="#9f1239" font-weight="bold">التوحيد القياسي</text>
+<text x="240" y="86" text-anchor="middle" font-size="12" fill="#9f1239" font-family="'Amiri',serif" font-weight="bold">z = (x - μ)/σ</text>
+<path d="M313 75 L333 75" stroke="#9f1239" stroke-width="2" marker-end="url(#aN)"/>
+<rect x="335" y="45" width="120" height="60" rx="8" fill="#fecdd3" stroke="#e11d48" stroke-width="2"/>
+<text x="395" y="68" text-anchor="middle" font-size="10" fill="#9f1239" font-weight="bold">الجدول</text>
+<text x="395" y="86" text-anchor="middle" font-size="10" fill="#9f1239">المساحة على يسار z</text>
+<path d="M395 108 L395 126" stroke="#9f1239" stroke-width="2" marker-end="url(#aN2)"/>
+<rect x="120" y="128" width="240" height="46" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="240" y="148" text-anchor="middle" font-size="10" fill="#166534" font-weight="bold">الاحتمال المطلوب:</text>
+<text x="240" y="166" text-anchor="middle" font-size="10" fill="#166534" font-family="'Amiri',serif">بين حدين: طرح | ذيل أيمن: 1 - A | أيسر: A</text>
+<rect x="25" y="186" width="430" height="46" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="240" y="205" text-anchor="middle" font-size="10" fill="#92400e" font-weight="bold">🔄 المسألة العكسية (إيجاد x من احتمال):</text>
+<text x="240" y="223" text-anchor="middle" font-size="11" fill="#92400e" font-family="'Amiri',serif">المساحة ← z من الجدول ← x = μ + z·σ</text>
+<defs><marker id="aN" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#9f1239"/></marker><marker id="aN2" markerWidth="8" markerHeight="8" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 z" fill="#9f1239"/></marker></defs>
+</svg>`,
+
+region_between: `<svg class="svg-graph" width="480" height="260" viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="470" height="250" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="240" y="26" text-anchor="middle" font-size="13" fill="#1e40af" font-weight="bold">🔵 احتمال بين قيمتين: P(a &lt; X &lt; b)</text>
+<line x1="30" y1="210" x2="450" y2="210" stroke="#374151" stroke-width="2"/>
+<path d="M 150 170 C 180 130 200 70 240 60 C 280 70 300 130 330 170 L 330 210 L 150 210 Z" fill="#2563eb" opacity="0.3"/>
+<path d="${BELL}" fill="none" stroke="#1e40af" stroke-width="3"/>
+<line x1="150" y1="170" x2="150" y2="210" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,3"/>
+<line x1="330" y1="170" x2="330" y2="210" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,3"/>
+<line x1="240" y1="60" x2="240" y2="210" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="240" y="228" text-anchor="middle" font-size="10" fill="#374151" font-weight="bold">μ</text>
+<text x="150" y="228" text-anchor="middle" font-size="10" fill="#dc2626" font-weight="bold">a (z₁)</text>
+<text x="330" y="228" text-anchor="middle" font-size="10" fill="#dc2626" font-weight="bold">b (z₂)</text>
+<text x="240" y="150" text-anchor="middle" font-size="12" fill="#1e3a8a" font-weight="bold">المساحة المطلوبة</text>
+<rect x="60" y="236" width="360" height="20" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="240" y="250" text-anchor="middle" font-size="11" fill="#92400e" font-family="'Amiri',serif" font-weight="bold">P = A(z₂) - A(z₁)  (مساحة اليسار الكبرى - الصغرى)</text>
+</svg>`,
+
+region_right: `<svg class="svg-graph" width="480" height="250" viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="470" height="240" rx="12" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+<text x="240" y="26" text-anchor="middle" font-size="13" fill="#9f1239" font-weight="bold">🔴 الذيل الأيمن: P(X ≥ k) = 1 - A(z)</text>
+<line x1="30" y1="200" x2="450" y2="200" stroke="#374151" stroke-width="2"/>
+<path d="M 330 160 C 360 190 390 198 440 200 L 330 200 Z" fill="#ec4899" opacity="0.35"/>
+<path d="M 40 200 C 90 198 120 190 150 160 C 180 120 200 60 240 50 C 280 60 300 120 330 160 C 360 190 390 198 440 200" fill="none" stroke="#9f1239" stroke-width="3"/>
+<line x1="330" y1="160" x2="330" y2="200" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,3"/>
+<text x="330" y="218" text-anchor="middle" font-size="10" fill="#dc2626" font-weight="bold">k (z)</text>
+<text x="385" y="185" text-anchor="middle" font-size="11" fill="#9f1239" font-weight="bold">المطلوب</text>
+<text x="180" y="150" text-anchor="middle" font-size="10" fill="#64748b">A(z) من الجدول (يسار)</text>
+<rect x="60" y="226" width="360" height="18" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="240" y="239" text-anchor="middle" font-size="10" fill="#92400e" font-family="'Amiri',serif" font-weight="bold">الجدول يعطي اليسار ⇒ الذيل الأيمن = 1 - المساحة</text>
+</svg>`,
+
+region_left: `<svg class="svg-graph" width="480" height="250" viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="470" height="240" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+<text x="240" y="26" text-anchor="middle" font-size="13" fill="#065f46" font-weight="bold">🟢 الذيل الأيسر: P(X &lt; k) = A(z) مباشرة</text>
+<line x1="30" y1="200" x2="450" y2="200" stroke="#374151" stroke-width="2"/>
+<path d="M 40 200 C 90 198 120 190 150 160 C 180 120 200 60 240 50 L 240 200 L 40 200 Z" fill="#10b981" opacity="0.25"/>
+<path d="M 40 200 C 90 198 120 190 150 160 C 180 120 200 60 240 50 C 280 60 300 120 330 160 C 360 190 390 198 440 200" fill="none" stroke="#065f46" stroke-width="3"/>
+<line x1="240" y1="50" x2="240" y2="200" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,3"/>
+<text x="240" y="218" text-anchor="middle" font-size="10" fill="#dc2626" font-weight="bold">k (z)</text>
+<text x="140" y="170" text-anchor="middle" font-size="11" fill="#065f46" font-weight="bold">المطلوب = قيمة الجدول</text>
+<rect x="60" y="226" width="360" height="18" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="240" y="239" text-anchor="middle" font-size="10" fill="#92400e" font-weight="bold">لا عملية إضافية: المساحة على يسار z هي الجواب مباشرة</text>
+</svg>`,
+
+inverse_area: `<svg class="svg-graph" width="480" height="260" viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="470" height="250" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="240" y="26" text-anchor="middle" font-size="13" fill="#5b21b6" font-weight="bold">🟣 المسألة العكسية: من النسبة (90%) إلى القيمة x</text>
+<line x1="30" y1="200" x2="450" y2="200" stroke="#374151" stroke-width="2"/>
+<path d="M 40 200 C 90 198 120 190 150 160 C 180 120 200 60 240 50 C 280 60 300 120 330 160 C 345 175 352 182 360 188 L 360 200 L 40 200 Z" fill="#7c3aed" opacity="0.25"/>
+<path d="M 40 200 C 90 198 120 190 150 160 C 180 120 200 60 240 50 C 280 60 300 120 330 160 C 360 190 390 198 440 200" fill="none" stroke="#5b21b6" stroke-width="3"/>
+<line x1="360" y1="188" x2="360" y2="200" stroke="#dc2626" stroke-width="2.5"/>
+<text x="360" y="218" text-anchor="middle" font-size="10" fill="#dc2626" font-weight="bold">x = ؟</text>
+<text x="190" y="160" text-anchor="middle" font-size="12" fill="#5b21b6" font-weight="bold">90%</text>
+<rect x="40" y="226" width="400" height="24" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="240" y="242" text-anchor="middle" font-size="10" fill="#92400e" font-family="'Amiri',serif" font-weight="bold">0.9000 ← أقرب مساحة 0.8997 ⇒ z = 1.28 ⇒ x = μ + 1.28σ</text>
+</svg>`,
+
+battery_regions: `<svg class="svg-graph" width="480" height="280" viewBox="0 0 480 280" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="470" height="270" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="240" y="26" text-anchor="middle" font-size="13" fill="#92400e" font-weight="bold">🔋 البطاريات (μ=8، σ=1.5): المناطق الثلاث</text>
+<g>
+<rect x="20" y="42" width="140" height="100" rx="8" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+<text x="90" y="60" text-anchor="middle" font-size="10" fill="#92400e" font-weight="bold">(a) X &lt; 6</text>
+<path d="M 30 120 C 50 119 60 116 70 106 C 80 92 86 72 90 68 C 94 72 100 92 110 106 C 120 116 130 119 150 120" fill="none" stroke="#92400e" stroke-width="2"/>
+<path d="M 30 120 C 50 119 60 116 66 110 L 66 120 Z" fill="#dc2626" opacity="0.4"/>
+<line x1="66" y1="110" x2="66" y2="120" stroke="#dc2626" stroke-width="2"/>
+<text x="90" y="135" text-anchor="middle" font-size="9" fill="#92400e">z = -1.33 ⇒ P = 0.0918</text>
+<rect x="170" y="42" width="140" height="100" rx="8" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+<text x="240" y="60" text-anchor="middle" font-size="10" fill="#92400e" font-weight="bold">(b) X &gt; 12</text>
+<path d="M 180 120 C 200 119 210 116 220 106 C 230 92 236 72 240 68 C 244 72 250 92 260 106 C 270 116 280 119 300 120" fill="none" stroke="#92400e" stroke-width="2"/>
+<path d="M 288 112 C 292 116 296 119 300 120 L 288 120 Z" fill="#dc2626" opacity="0.4"/>
+<line x1="288" y1="112" x2="288" y2="120" stroke="#dc2626" stroke-width="2"/>
+<text x="240" y="135" text-anchor="middle" font-size="9" fill="#92400e">z = 2.67 ⇒ P = 1-0.9962 = 0.0038</text>
+<rect x="320" y="42" width="140" height="100" rx="8" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+<text x="390" y="60" text-anchor="middle" font-size="10" fill="#92400e" font-weight="bold">(c) 8 &lt; X &lt; 9</text>
+<path d="M 330 120 C 350 119 360 116 370 106 C 380 92 386 72 390 68 C 394 72 400 92 410 106 C 420 116 430 119 450 120" fill="none" stroke="#92400e" stroke-width="2"/>
+<path d="M 390 68 C 394 72 400 92 406 102 L 406 120 L 390 120 Z" fill="#16a34a" opacity="0.4"/>
+<line x1="390" y1="68" x2="390" y2="120" stroke="#16a34a" stroke-width="1.5"/>
+<line x1="406" y1="102" x2="406" y2="120" stroke="#16a34a" stroke-width="1.5"/>
+<text x="390" y="135" text-anchor="middle" font-size="9" fill="#92400e">z: 0 → 0.67 ⇒ P = 0.2486</text>
+</g>
+<rect x="20" y="152" width="440" height="52" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="240" y="172" text-anchor="middle" font-size="10" fill="#166534" font-weight="bold">💡 لاحظ: (c) تبدأ من μ نفسها ⇒ z₁ = 0 ومساحتها 0.5000 دائماً</text>
+<text x="240" y="192" text-anchor="middle" font-size="10" fill="#166534">المنطقة بين μ وأي قيمة = A(z) - 0.5</text>
+<rect x="20" y="214" width="440" height="46" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<text x="240" y="233" text-anchor="middle" font-size="10" fill="#991b1b" font-weight="bold">⚠️ (b) ذيل أيمن: لا تنسَ الطرح من 1!</text>
+<text x="240" y="250" text-anchor="middle" font-size="10" fill="#991b1b" font-family="'Amiri',serif">P(X ≥ 12) = 1 - 0.9962 = 0.0038</text>
+</svg>`,
+
+table_reading: `<svg class="svg-graph" width="480" height="230" viewBox="0 0 480 230" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="470" height="220" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<text x="240" y="26" text-anchor="middle" font-size="13" fill="#991b1b" font-weight="bold">📖 كيف تقرأ جدول المساحات؟</text>
+<g font-family="'Amiri',serif" font-size="12" text-anchor="middle">
+<rect x="90" y="45" width="120" height="34" fill="#fecaca" stroke="#dc2626" stroke-width="2"/><text x="150" y="67" fill="#991b1b" font-weight="bold">z</text>
+<rect x="210" y="45" width="90" height="34" fill="#fecaca" stroke="#dc2626" stroke-width="2"/><text x="255" y="67" fill="#991b1b">-1.83</text>
+<rect x="300" y="45" width="90" height="34" fill="#fecaca" stroke="#dc2626" stroke-width="2"/><text x="345" y="67" fill="#991b1b">1.50</text>
+<rect x="90" y="79" width="120" height="34" fill="#fecaca" stroke="#dc2626" stroke-width="2"/><text x="150" y="101" fill="#991b1b" font-weight="bold">المساحة على يسار z</text>
+<rect x="210" y="79" width="90" height="34" fill="#fff" stroke="#dc2626" stroke-width="2"/><text x="255" y="101" fill="#166534" font-weight="bold">0.0336</text>
+<rect x="300" y="79" width="90" height="34" fill="#fff" stroke="#dc2626" stroke-width="2"/><text x="345" y="101" fill="#166534" font-weight="bold">0.9332</text>
+</g>
+<path d="M255 116 L255 134" stroke="#dc2626" stroke-width="2" marker-end="url(#aT2)"/>
+<path d="M345 116 L345 134" stroke="#dc2626" stroke-width="2" marker-end="url(#aT2)"/>
+<rect x="60" y="138" width="360" height="40" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="240" y="155" text-anchor="middle" font-size="11" fill="#92400e" font-family="'Amiri',serif" font-weight="bold">P(70 &lt; X &lt; 90) = 0.9332 - 0.0336 = 0.8996</text>
+<text x="240" y="172" text-anchor="middle" font-size="10" fill="#92400e">اطرح مساحة اليسار الصغرى من الكبرى</text>
+<rect x="60" y="186" width="360" height="32" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<text x="240" y="207" text-anchor="middle" font-size="10" fill="#991b1b" font-weight="bold">⚠️ z السالب مساحته أقل من 0.5 دائماً — تحقق من معقولية قراءتك!</text>
+<defs><marker id="aT2" markerWidth="8" markerHeight="8" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 z" fill="#dc2626"/></marker></defs>
+</svg>`
+};
+
+// ==================== WRITTEN QUESTIONS ====================
+const QUESTIONS = [
+{ section: 1, svg: 'region_between',
+  statement: { ar: 'تتوزع درجات الحرارة لأحد الشهور في إحدى مدن الإمارات توزيعاً طبيعياً حيث μ = 81° و σ = 6°. جد P(70° &lt; X &lt; 90°). استخدم الجدول.' + TBL([['-1.83','0.0336'],['1.50','0.9332']]), en: 'Temperatures for a month in a UAE city are normal with μ = 81°, σ = 6°. Find P(70° &lt; X &lt; 90°). Use the table.' + TBL([['-1.83','0.0336'],['1.50','0.9332']]) },
+  steps: [
+    { ar: 'وحّد المعايرة: z₁ = (70 - 81)/6 = -11/6 ≈ -1.83', en: 'Standardize: z₁ = (70 - 81)/6 ≈ -1.83' },
+    { ar: 'z₂ = (90 - 81)/6 = 9/6 = 1.50', en: 'z₂ = (90 - 81)/6 = 1.50' },
+    { ar: 'من الجدول: A(-1.83) = 0.0336 و A(1.50) = 0.9332', en: 'From table: A(-1.83) = 0.0336, A(1.50) = 0.9332' },
+    { ar: 'P = 0.9332 - 0.0336 = 0.8996', en: 'P = 0.9332 - 0.0336 = 0.8996' }
+  ],
+  final: { ar: 'P(70 &lt; X &lt; 90) = 0.8996 (≈ 90%)', en: 'P(70 &lt; X &lt; 90) = 0.8996 (≈ 90%)' },
+  check: { ar: 'معقول: الفترة تشمل μ لذا الاحتمال كبير ✓', en: 'Reasonable: interval contains μ so probability is large ✓' } },
+{ section: 1, svg: 'region_right',
+  statement: { ar: 'في السؤال السابق (μ = 81، σ = 6)، جد P(X ≥ 95°). استخدم الجدول.' + TBL([['2.33','0.9901']]), en: 'In the previous problem (μ = 81, σ = 6), find P(X ≥ 95°). Use the table.' + TBL([['2.33','0.9901']]) },
+  steps: [
+    { ar: 'z = (95 - 81)/6 = 14/6 ≈ 2.33', en: 'z = (95 - 81)/6 ≈ 2.33' },
+    { ar: 'من الجدول: المساحة على يسار z = 0.9901', en: 'Table: area left of z = 0.9901' },
+    { ar: 'المطلوب ذيل أيمن: P = 1 - 0.9901', en: 'Right tail needed: P = 1 - 0.9901' },
+    { ar: 'P = 0.0099', en: 'P = 0.0099' }
+  ],
+  final: { ar: 'P(X ≥ 95) = 0.0099 (≈ 1%)', en: 'P(X ≥ 95) = 0.0099 (≈ 1%)' },
+  check: { ar: 'معقول: 95 أبعد من انحرافين ⇒ احتمال صغير جداً ✓', en: 'Reasonable: 95 is beyond 2σ ⇒ very small probability ✓' } },
+{ section: 1, svg: 'region_left',
+  statement: { ar: 'تتوزع درجات اختبار معياري توزيعاً طبيعياً فيه μ = 72 و σ = 11. جد P(X &lt; 89). استخدم الجدول.' + TBL([['1.55','0.9394']]), en: 'Standardized test scores are normal with μ = 72, σ = 11. Find P(X &lt; 89). Use the table.' + TBL([['1.55','0.9394']]) },
+  steps: [
+    { ar: 'z = (89 - 72)/11 = 17/11 ≈ 1.55', en: 'z = (89 - 72)/11 ≈ 1.55' },
+    { ar: 'المطلوب ذيل أيسر ⇒ الاحتمال = المساحة في الجدول مباشرة', en: 'Left tail ⇒ probability = table area directly' },
+    { ar: 'P = 0.9394', en: 'P = 0.9394' }
+  ],
+  final: { ar: 'P(X &lt; 89) = 0.9394', en: 'P(X &lt; 89) = 0.9394' },
+  check: { ar: 'لا طرح ولا تكملة هنا: الجدول يعطي يسار z مباشرة', en: 'No subtraction here: table gives left area directly' } },
+{ section: 1, svg: 'table_reading',
+  statement: { ar: 'في السؤال السابق (μ = 72، σ = 11)، جد P(65 &lt; X &lt; 85). استخدم الجدول.' + TBL([['-0.64','0.2611'],['1.18','0.8810']]), en: 'In the previous problem (μ = 72, σ = 11), find P(65 &lt; X &lt; 85). Use the table.' + TBL([['-0.64','0.2611'],['1.18','0.8810']]) },
+  steps: [
+    { ar: 'z₁ = (65 - 72)/11 = -7/11 ≈ -0.64', en: 'z₁ = (65 - 72)/11 ≈ -0.64' },
+    { ar: 'z₂ = (85 - 72)/11 = 13/11 ≈ 1.18', en: 'z₂ = (85 - 72)/11 ≈ 1.18' },
+    { ar: 'المساحتان: 0.2611 و 0.8810', en: 'Areas: 0.2611 and 0.8810' },
+    { ar: 'P = 0.8810 - 0.2611 = 0.6199', en: 'P = 0.8810 - 0.2611 = 0.6199' }
+  ],
+  final: { ar: 'P(65 &lt; X &lt; 85) = 0.6199', en: 'P(65 &lt; X &lt; 85) = 0.6199' },
+  check: { ar: 'الفترة حول μ ⇒ احتمال متوسط-كبير، منطقي ✓', en: 'Interval around μ ⇒ medium-large probability ✓' } },
+{ section: 1, svg: 'inverse_area',
+  statement: { ar: 'في السؤال السابق (μ = 72، σ = 11)، جد الدرجة التي يقع دونها 90% تقريباً من الدرجات. استخدم الجدول.' + TBL([['1.28','0.8997'],['1.29','0.9015']]), en: 'In the previous problem (μ = 72, σ = 11), find the score below which about 90% of scores fall. Use the table.' + TBL([['1.28','0.8997'],['1.29','0.9015']]) },
+  steps: [
+    { ar: 'نبحث عن أقرب مساحة إلى 0.9000: |0.8997 - 0.9| = 0.0003 أقرب من 0.9015', en: 'Closest area to 0.9000: 0.8997 (diff 0.0003) beats 0.9015' },
+    { ar: 'إذن z = 1.28', en: 'So z = 1.28' },
+    { ar: 'نعود للوحدات: x = μ + z·σ = 72 + 1.28(11) = 72 + 14.08', en: 'Back to units: x = 72 + 1.28(11) = 86.08' },
+    { ar: 'x ≈ 86 درجة', en: 'x ≈ 86 points' }
+  ],
+  final: { ar: 'الدرجة ≈ 86.08 ≈ 86', en: 'Score ≈ 86.08 ≈ 86' },
+  check: { ar: 'فوق μ بمقدار 1.28σ — منطقي لأن 90% &gt; 50%', en: 'Above μ by 1.28σ — sensible since 90% &gt; 50%' } },
+{ section: 1, svg: 'battery_regions',
+  statement: { ar: 'البطاريات: العمر الافتراضي موزع طبيعياً حيث μ = 8 ساعات و σ = 1.5 ساعة. جد: (a) P(X &lt; 6) ، (b) P(X &gt; 12) ، (c) P(8 &lt; X &lt; 9). استخدم الجدول.' + TBL([['-1.33','0.0918'],['0','0.5000'],['0.67','0.7486'],['2.67','0.9962']]), en: 'Batteries: lifetime normal with μ = 8 h, σ = 1.5 h. Find: (a) P(X &lt; 6), (b) P(X &gt; 12), (c) P(8 &lt; X &lt; 9). Use the table.' + TBL([['-1.33','0.0918'],['0','0.5000'],['0.67','0.7486'],['2.67','0.9962']]) },
+  steps: [
+    { ar: '(a) z = (6-8)/1.5 = -1.33 ⇒ P = 0.0918', en: '(a) z = -1.33 ⇒ P = 0.0918' },
+    { ar: '(b) z = (12-8)/1.5 = 2.67 ⇒ P = 1 - 0.9962 = 0.0038', en: '(b) z = 2.67 ⇒ P = 1 - 0.9962 = 0.0038' },
+    { ar: '(c) z₁ = (8-8)/1.5 = 0 (مساحة 0.5000) ، z₂ = (9-8)/1.5 = 0.67 (مساحة 0.7486)', en: '(c) z₁ = 0 (0.5000), z₂ = 0.67 (0.7486)' },
+    { ar: '(c) P = 0.7486 - 0.5000 = 0.2486', en: '(c) P = 0.7486 - 0.5000 = 0.2486' }
+  ],
+  final: { ar: '(a) 0.0918   (b) 0.0038   (c) 0.2486', en: '(a) 0.0918   (b) 0.0038   (c) 0.2486' },
+  check: { ar: '(b) ذيل أيمن ⇒ تكملة لواحد. (c) تبدأ من μ ⇒ اطرح 0.5', en: '(b) right tail ⇒ complement. (c) starts at μ ⇒ subtract 0.5' } },
+{ section: 2, svg: 'region_between',
+  statement: { ar: 'مسألة مشابهة: درجات الذكاء موزعة طبيعياً μ = 100 و σ = 15. جد P(85 &lt; X &lt; 115). استخدم الجدول.' + TBL([['-1.00','0.1587'],['1.00','0.8413']]), en: 'Similar: IQ scores normal with μ = 100, σ = 15. Find P(85 &lt; X &lt; 115). Use the table.' + TBL([['-1.00','0.1587'],['1.00','0.8413']]) },
+  steps: [
+    { ar: 'z₁ = (85-100)/15 = -1.00 ، z₂ = (115-100)/15 = +1.00', en: 'z₁ = -1.00, z₂ = +1.00' },
+    { ar: 'المساحتان: 0.1587 و 0.8413', en: 'Areas: 0.1587 and 0.8413' },
+    { ar: 'P = 0.8413 - 0.1587 = 0.6826', en: 'P = 0.8413 - 0.1587 = 0.6826' },
+    { ar: 'يطابق القاعدة التجريبية: ±1σ ≈ 68% ✓', en: 'Matches empirical rule: ±1σ ≈ 68% ✓' }
+  ],
+  final: { ar: 'P = 0.6826', en: 'P = 0.6826' },
+  check: { ar: 'ربط جميل: القاعدة التجريبية تؤكد الناتج', en: 'Nice link: empirical rule confirms the result' } },
+{ section: 2, svg: 'region_right',
+  statement: { ar: 'مسألة مشابهة: أوزان طرود موزعة طبيعياً μ = 50 kg و σ = 5 kg. جد P(X &gt; 60). استخدم الجدول.' + TBL([['2.00','0.9772']]), en: 'Similar: package weights normal with μ = 50 kg, σ = 5 kg. Find P(X &gt; 60). Use the table.' + TBL([['2.00','0.9772']]) },
+  steps: [
+    { ar: 'z = (60-50)/5 = 2.00', en: 'z = (60-50)/5 = 2.00' },
+    { ar: 'مساحة اليسار = 0.9772', en: 'Left area = 0.9772' },
+    { ar: 'ذيل أيمن: P = 1 - 0.9772 = 0.0228', en: 'Right tail: P = 1 - 0.9772 = 0.0228' }
+  ],
+  final: { ar: 'P(X &gt; 60) = 0.0228', en: 'P(X &gt; 60) = 0.0228' },
+  check: { ar: '≈ 2.3% فقط — يتفق مع قاعدة 95% (خارج ±2σ)', en: '≈ 2.3% — consistent with 95% rule (beyond ±2σ)' } },
+{ section: 2, svg: 'inverse_area',
+  statement: { ar: 'مسألة عكسية: رواتب موزعة طبيعياً μ = 500 و σ = 100. جد الراتب الذي يتجاوزه 10% من الموظفين فقط. استخدم الجدول.' + TBL([['1.28','0.8997'],['1.29','0.9015']]), en: 'Inverse: salaries normal with μ = 500, σ = 100. Find the salary exceeded by only 10% of employees. Use the table.' + TBL([['1.28','0.8997'],['1.29','0.9015']]) },
+  steps: [
+    { ar: 'يتجاوزه 10% ⇒ مساحة اليسار = 90% = 0.9000', en: 'Exceeded by 10% ⇒ left area = 0.9000' },
+    { ar: 'أقرب مساحة: 0.8997 ⇒ z = 1.28', en: 'Closest: 0.8997 ⇒ z = 1.28' },
+    { ar: 'x = μ + zσ = 500 + 1.28(100) = 628', en: 'x = 500 + 128 = 628' }
+  ],
+  final: { ar: 'الراتب ≈ 628', en: 'Salary ≈ 628' },
+  check: { ar: '«يتجاوزه 10%» تعني المساحة على يساره 0.90 — انتبه للاتجاه!', en: '"Exceeded by 10%" means left area 0.90 — mind the direction!' } },
+{ section: 2, svg: 'region_between',
+  statement: { ar: 'مسألة مشابهة بفرعين: عمر مصابيح كهربائية موزع طبيعياً μ = 900 ساعة و σ = 100 ساعة. جد: (a) P(X &lt; 1000) ، (b) P(800 &lt; X &lt; 1000). استخدم الجدول.' + TBL([['-1.00','0.1587'],['1.00','0.8413']]), en: 'Similar, two parts: bulb lifetimes normal with μ = 900 h, σ = 100 h. Find: (a) P(X &lt; 1000), (b) P(800 &lt; X &lt; 1000). Use the table.' + TBL([['-1.00','0.1587'],['1.00','0.8413']]) },
+  steps: [
+    { ar: '(a) z = (1000-900)/100 = 1.00 ⇒ P = 0.8413', en: '(a) z = 1.00 ⇒ P = 0.8413' },
+    { ar: '(b) z₁ = (800-900)/100 = -1.00 ⇒ مساحته 0.1587', en: '(b) z₁ = -1.00 ⇒ area 0.1587' },
+    { ar: '(b) P = 0.8413 - 0.1587 = 0.6826', en: '(b) P = 0.8413 - 0.1587 = 0.6826' }
+  ],
+  final: { ar: '(a) 0.8413   (b) 0.6826', en: '(a) 0.8413   (b) 0.6826' },
+  check: { ar: '(a) ذيل أيسر مباشر، (b) طرح مساحتين', en: '(a) direct left tail, (b) difference of areas' } }
+];
+
+const CHECKLIST = [
+  { ar: 'كتبت صيغة z وعوضت correttamente', en: 'Wrote z-formula & substituted correctly' },
+  { ar: 'قرأت المساحة الصحيحة من الجدول', en: 'Read the correct area from table' },
+  { ar: 'استخدمت العملية المناسبة (طرح/تكملة/مباشر)', en: 'Used proper operation (subtract/complement/direct)' },
+  { ar: 'كتبت الناتج النهائي مع تفسيره', en: 'Wrote final result with interpretation' }
+];
+CHECKLIST[0].ar = 'كتبت صيغة z وعوّضت بشكل صحيح';
+
+// ==================== STATE & STORAGE ====================
+function showSaveIndicator(){const i=document.getElementById('saveIndicator');i.classList.add('show');if(saveIndicatorTimeout)clearTimeout(saveIndicatorTimeout);saveIndicatorTimeout=setTimeout(()=>i.classList.remove('show'),1200)}
+function saveState(show=true){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({lang:currentLang,studentName:document.getElementById('studentName').value,studentClass:document.getElementById('studentClass').value,examDate:document.getElementById('examDate').value,answers:studentAnswers,scores:studentScores,checks:studentChecks,timeRemaining:timeRemaining,savedAt:Date.now()}));if(show)showSaveIndicator()}catch(e){console.error(e)}}
+function loadState(){try{const s=localStorage.getItem(STORAGE_KEY);return s?JSON.parse(s):null}catch(e){return null}}
+function clearProgress(){if(confirm(currentLang==='ar'?'⚠️ مسح كل الحلول والدرجات المحفوظة؟':'⚠️ Clear all saved solutions and scores?')){localStorage.removeItem(STORAGE_KEY);location.reload()}}
+
+// ==================== RENDER ====================
+function renderExam(){
+  const c=document.getElementById('exam-content');let html='',sec=0;
+  QUESTIONS.forEach((q,i)=>{
+    if(q.section!==sec){sec=q.section;html+='<div class="section-head">'+(sec===1?(currentLang==='ar'?'📘 القسم الأول: مسائل الكتاب (104 - 109) — 10 درجات لكل مسألة':'📘 Part One: Textbook Problems (104-109) — 10 pts each'):(currentLang==='ar'?'📗 القسم الثاني: مسائل مشابهة وعكسية — 10 درجات لكل مسألة':'📗 Part Two: Similar & Inverse Problems — 10 pts each'))+'</div>';}
+    html+='<div class="q-card" id="card-'+i+'">';
+    html+='<div class="flex flex-wrap items-center justify-between gap-2 mb-3"><span class="bg-rose-700 text-white font-extrabold rounded-full w-9 h-9 flex items-center justify-center">'+(i+1)+'</span><span class="text-xs font-bold text-rose-700 bg-rose-50 border border-rose-200 rounded-full px-3 py-1">10 '+(currentLang==='ar'?'درجات':'pts')+'</span></div>';
+    html+='<div class="q-statement arabic-math">'+q.statement[currentLang]+'</div>';
+    if(q.svg)html+='<div class="graph-container">'+q.svgGraphsRef+'</div>';
+    if(q.svg)html=html.replace('</div>'+('', ''), html.slice(-0)||''); // placeholder no-op
+    html+='<p class="text-sm font-bold text-rose-800 mt-3 mb-1">✍️ '+(currentLang==='ar'?'الحل:':'Solution:')+'</p>';
+    html+='<textarea class="answer-area" id="sol-'+i+'" placeholder="'+(currentLang==='ar'?'اكتب: (1) قيمة z ... (2) قراءة الجدول ... (3) العملية ... (4) الناتج النهائي':'Write: (1) z-value ... (2) table read ... (3) operation ... (4) final result')+'"></textarea>';
+    html+='<div class="flex flex-wrap gap-2 mt-3 no-print">';
+    CHECKLIST.forEach((ch,j)=>{const ck=(studentChecks[i]&&studentChecks[i][j])?'checked':'';html+='<label class="check-item"><input type="checkbox" data-q="'+i+'" data-c="'+j+'" '+ck+'> '+ch[currentLang]+'</label>';});
+    html+='</div>';
+    html+='<div class="flex flex-wrap items-center justify-between gap-3 mt-4 no-print">';
+    html+='<button onclick="toggleModel('+i+')" class="bg-green-600 hover:bg-green-700 text-white text-sm px-4 py-2 rounded-lg font-bold transition">🔑 '+(currentLang==='ar'?'الحل النموذجي':'Model solution')+'</button>';
+    html+='<label class="flex items-center gap-2 text-sm font-bold text-rose-800">'+(currentLang==='ar'?'الدرجة الممنوحة:':'Score:')+' <input type="number" min="0" max="10" step="0.5" class="score-input" id="score-'+i+'" data-q="'+i+'"> / 10</label>';
+    html+='</div>';
+    html+='<div class="model-box" id="model-'+i+'" style="display:none">';
+    html+='<p class="font-extrabold text-green-800 mb-2">'+(currentLang==='ar'?'✅ الحل النموذجي:':'✅ Model solution:')+'</p>';
+    q.steps.forEach((s,k)=>{html+='<div class="model-step"><span class="step-no">'+(k+1)+'</span>'+s[currentLang]+'</div>';});
+    html+='<div class="final-answer">'+q.final[currentLang]+'</div>';
+    html+='<p class="text-xs text-green-700 mt-2 font-bold">'+q.check[currentLang]+'</p></div></div>';
+  });
+  c.innerHTML=html;
+  // inject svgs properly
+  QUESTIONS.forEach((q,i)=>{ if(q.svg){ const card=document.getElementById('card-'+i); const g=document.createElement('div'); g.className='graph-container'; g.innerHTML=svgGraphs[q.svg]; card.querySelector('.q-statement').after(g); } });
+  QUESTIONS.forEach((q,i)=>{const ta=document.getElementById('sol-'+i);if(ta&&studentAnswers[i])ta.value=studentAnswers[i];const sc=document.getElementById('score-'+i);if(sc&&studentScores[i]!==undefined&&studentScores[i]!=='')sc.value=studentScores[i];});
+  attachListeners();
+}
+
+function attachListeners(){
+  const c=document.getElementById('exam-content');
+  c.addEventListener('input',e=>{
+    if(e.target.classList.contains('answer-area')){studentAnswers[e.target.id.replace('sol-','')]=e.target.value;saveState(false);}
+    if(e.target.classList.contains('score-input')){studentScores[e.target.dataset.q]=e.target.value;saveState(false);}
+  });
+  c.addEventListener('change',e=>{
+    if(e.target.type==='checkbox'){const i=e.target.dataset.q,j=e.target.dataset.c;if(!studentChecks[i])studentChecks[i]={};studentChecks[i][j]=e.target.checked;saveState(true);}
+    if(e.target.classList.contains('score-input')||e.target.classList.contains('answer-area'))saveState(true);
+  });
+}
+
+function toggleModel(i){const m=document.getElementById('model-'+i);m.style.display=(m.style.display==='none')?'block':'none';}
+function toggleAllModels(){modelsVisible=!modelsVisible;QUESTIONS.forEach((q,i)=>{document.getElementById('model-'+i).style.display=modelsVisible?'block':'none';});}
+
+// ==================== GRADING ====================
+function gradeExam(){
+  let total=0;const rows=[];
+  QUESTIONS.forEach((q,i)=>{let v=parseFloat(studentScores[i]);if(isNaN(v))v=0;v=Math.max(0,Math.min(10,v));total+=v;rows.push({i:i,score:v,hasWork:(studentAnswers[i]||'').trim().length>0});});
+  document.getElementById('res-total').textContent=total+' / 100';
+  document.getElementById('res-name').textContent=document.getElementById('studentName').value||(currentLang==='ar'?'طالب':'Student');
+  document.getElementById('res-date').textContent=document.getElementById('examDate').value||new Date().toLocaleDateString();
+  document.getElementById('success-percent').textContent=total+'%';
+  const badge=document.getElementById('success-badge');let cls,txt;
+  if(total>=90){cls='bg-green-100 text-green-800';txt=currentLang==='ar'?'🌟 ممتاز جداً':'🌟 Outstanding';}
+  else if(total>=75){cls='bg-yellow-100 text-yellow-800';txt=currentLang==='ar'?'👏 ممتاز':'👏 Excellent';}
+  else if(total>=50){cls='bg-blue-100 text-blue-800';txt=currentLang==='ar'?'👍 جيد':'👍 Good';}
+  else{cls='bg-red-100 text-red-800';txt=currentLang==='ar'?'💪 يحتاج تحسين':'💪 Needs improvement';}
+  badge.className='inline-block px-4 py-1 rounded-full font-bold '+cls;badge.textContent=txt;
+  document.getElementById('per-problem-scores').innerHTML=rows.map(r=>'<div class="flex justify-between items-center p-2 bg-white rounded-lg border border-gray-200"><span class="font-bold text-gray-700">'+(currentLang==='ar'?'المسألة':'Problem')+' '+(r.i+1)+(r.hasWork?'':(currentLang==='ar'?' ⚠️ بدون كتابة حل':' ⚠️ no written work'))+'</span><span class="font-extrabold text-rose-700">'+r.score+' / 10</span></div>').join('');
+  document.getElementById('results-panel').classList.remove('hidden');
+  document.getElementById('results-panel').scrollIntoView({behavior:'smooth'});
+}
+
+// ==================== EMAIL ====================
+function sendResultsToEmail(){
+  const btn=document.getElementById('sendEmailBtn'),status=document.getElementById('emailStatus');
+  btn.disabled=true;btn.textContent=currentLang==='ar'?'⏳ جاري الإرسال...':'⏳ Sending...';
+  const name=document.getElementById('studentName').value||'N/A',klass=document.getElementById('studentClass').value||'N/A',date=document.getElementById('examDate').value||new Date().toLocaleDateString(),total=document.getElementById('res-total').textContent;
+  let html='<div style="font-family:Arial;direction:rtl"><h2>📝 امتحان كتابي: التوزيع الطبيعي - رياضيات 12 عام</h2><p><b>الاسم:</b> '+name+' | <b>الشعبة:</b> '+klass+' | <b>التاريخ:</b> '+date+'</p><p><b>المجموع:</b> '+total+'</p><hr>';
+  QUESTIONS.forEach((q,i)=>{
+    const ans=(studentAnswers[i]||'(لم يُكتب حل)').replace(/\n/g,'<br>');
+    const sc=(studentScores[i]!==undefined&&studentScores[i]!=='')?studentScores[i]:'—';
+    html+='<div style="border:1px solid #ccc;border-radius:8px;padding:10px;margin:10px 0"><p style="background:#ffe4e6;padding:6px;border-radius:6px"><b>س'+(i+1)+':</b> '+q.statement.ar.replace(/<table[\s\S]*?<\/table>/,' [جدول] ').replace(/<[^>]+>/g,'')+' <span style="color:#b45309">(الدرجة: '+sc+'/10)</span></p><p><b>حل الطالب:</b><br>'+ans+'</p><p style="color:#166534"><b>الحل النموذجي:</b> '+q.steps.map(s=>s.ar).join(' ← ')+' ⇒ <b>'+q.final.ar+'</b></p></div>';
+  });
+  html+='</div>';
+  emailjs.send(SERVICE_ID,TEMPLATE_ID,{to_email:TARGET_EMAIL,student_name:name,student_class:klass,exam_date:date,total_score:total,success_rate:total+'%',grade:document.getElementById('success-badge').textContent,answers_table:html})
+  .then(()=>{status.textContent=currentLang==='ar'?'✅ أُرسلت الإجابات والدرجات بنجاح':'✅ Sent successfully';status.style.color='#16a34a';btn.disabled=false;})
+  .catch(err=>{status.textContent=currentLang==='ar'?'❌ فشل الإرسال':'❌ Failed';status.style.color='#dc2626';btn.disabled=false;console.error(err);});
+}
+
+// ==================== TIMER / LANG / INIT ====================
+function updateTimerDisplay(){const m=Math.floor(timeRemaining/60),s=timeRemaining%60;document.getElementById('timer').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function startTimer(){updateTimerDisplay();timerInterval=setInterval(()=>{timeRemaining--;updateTimerDisplay();if(timeRemaining%60===0)saveState(false);if(timeRemaining<=600)document.getElementById('timer').classList.add('timer-warning');if(timeRemaining<=0){clearInterval(timerInterval);alert(currentLang==='ar'?'⏰ انتهى الوقت!':"⏰ Time's up!");}},1000);}
+function setLanguage(lang){currentLang=lang;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.getElementById('btn-ar').classList.toggle('active',lang==='ar');document.getElementById('btn-en').classList.toggle('active',lang==='en');document.body.classList.toggle('en-mode',lang==='en');document.querySelectorAll('[data-ar]').forEach(el=>{el.textContent=el.getAttribute('data-'+lang)});renderExam();saveState(false);}
+window.addEventListener('DOMContentLoaded',()=>{
+  const saved=loadState();
+  if(saved){currentLang=saved.lang||'ar';studentAnswers=saved.answers||{};studentScores=saved.scores||{};studentChecks=saved.checks||{};timeRemaining=(saved.timeRemaining!==undefined)?saved.timeRemaining:TOTAL_TIME;document.getElementById('studentName').value=saved.studentName||'';document.getElementById('studentClass').value=saved.studentClass||'';document.getElementById('examDate').value=saved.examDate||'';}
+  document.getElementById('btn-ar').classList.toggle('active',currentLang==='ar');
+  document.getElementById('btn-en').classList.toggle('active',currentLang==='en');
+  document.body.classList.toggle('en-mode',currentLang==='en');
+  document.documentElement.lang=currentLang;document.documentElement.dir=currentLang==='ar'?'rtl':'ltr';
+  document.querySelectorAll('[data-ar]').forEach(el=>{el.textContent=el.getAttribute('data-'+currentLang)});
+  ['studentName','studentClass','examDate'].forEach(id=>{const el=document.getElementById(id);el.addEventListener('input',()=>saveState(false));el.addEventListener('blur',()=>saveState(true));});
+  renderExam();
+  document.getElementById('method-holder').innerHTML=svgGraphs.standardize_flow;
+  startTimer();
+});
+window.addEventListener('beforeunload',()=>saveState(false));
+</script>
+</body>
+</html>
